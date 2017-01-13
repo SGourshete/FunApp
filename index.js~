@@ -1,10 +1,18 @@
 var http = require('http');
+var mustache = require('mustache');
+
 
 requestHandler = function(req,res){
 	console.log();
 	if(req.url == '/')
 	{
-		res.end('Welcome');	
+		result=mustache.render("{{first_name}} {{last_name}}",
+{
+	first_name: 'Swapnil',
+	last_name: 'G'
+})
+
+		res.end(result);	
 	}
 	else{
 		res.end('Away from Home');
